@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# Hook script to replace the default .bashrc with the BigCommunity version
+
+# Define file paths
+targetFile='/etc/skel/.bashrc'
+backupFile='/etc/skel/.bashrc.bak'
+sourceFile='/etc/skel/.dot.bashrc'
+
+# Only proceed if source file exists
+if [ -e "$sourceFile" ]; then
+    # Backup original file if it exists
+    if [ -e "$targetFile" ]; then
+        mv -f "$targetFile" "$backupFile" || {
+            echo "Error: Failed to create backup file."
+            exit 1
+        }
+    fi
+    
+    # Replace with new file
+    mv -f "$sourceFile" "$targetFile" || {
+        echo "Error: Failed to install new .bashrc file."
+        # Restore backup if replacement fails
+        [ -e "$backupFile" ] && mv -f "$backupFile" "$targetFile"
+        exit 1
+    }
+fi
+
+exit 0
