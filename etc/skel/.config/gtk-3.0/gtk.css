@@ -6,9 +6,12 @@
 }
 
 /* Configuration icons tray XFCE */
- #xfce4-notification-plugin *, #xfce4-power-manager-plugin *, #pulseaudio-button *, #indicator-button *, #sn-button *, #showdesktop-button *, #xfce4-clipman-plugin * {
- -gtk-icon-transform: scale(0.60);
-  color: #afafaf;
+ #xfce4-notification-plugin *, #xfce4-power-manager-plugin *, #pulseaudio-button *, #indicator-button *, #sn-button *, #showdesktop-button * {
+ -gtk-icon-transform: scale(0.8);
+}
+
+#xfce4-clipman-plugin * {
+ -gtk-icon-transform: scale(0.6);
 }
 
 /* Configuration Calendar XFCE */
