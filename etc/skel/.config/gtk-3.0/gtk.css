@@ -78,25 +78,54 @@ padding-top: 2px;
 padding-bottom: 2px;
 }
 
+.thunar * { border: 0 }
 
-/* Remove borders from all elements inside Thunar */
-.thunar * {
-    border: none;
+
+.thunar .vertical .view {
+    border-bottom-left-radius: 12px;
 }
 
-/* Scale down icons in the Thunar toolbar
-.thunar > grid > toolbar * {
-    -gtk-icon-transform: scale(0.9);
-} */
-
-/* Set spacing for icon view in Thunar */
-* {
-    /* Set row spacing in icon view */
-    -ThunarAbstractIconView-row-spacing: 15;
-    /* Set column spacing in icon view */
-    -ThunarAbstractIconView-column-spacing: 50;
+.thunar .vertical .view, .thunar toolbar {
+    background: @headerbar_bg_color;
+    padding-bottom: 3px;
+    padding-top: 3px;
+    color: alpha(@window_fg_color,0.75);
 }
 
+.thunar toolbar * {
+    color: alpha(@window_fg_color,0.75);
+}
+
+.thunar .vertical .view:selected {
+    background-color: alpha(@theme_selected_bg_color,0.2);
+    border-radius: 8px;
+
+}
+.view { padding-right: 5px; }
+
+.thunar .vertical *:backdrop, .thunar toolbar:backdrop {
+    background: @headerbar_bg_color_backdrop;
+}
+
+.thunar:not(.maximized):not(.fullscreen):not(.popup):not(.menu):not(.dropdown):not(.tooltip):not(.context-menu) .sidebar {
+    border-bottom-left-radius: 12px;
+}
+
+.thunar .sidebar {
+   padding-left: 10px;
+   padding-right: 10px;
+}
+
+window:not(.maximized):not(.fullscreen):not(.popup):not(.menu):not(.dropdown):not(.tooltip):not(.context-menu) decoration, window.csd:not(.maximized):not(.fullscreen) {
+    border-bottom-right-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
+
+/* Thunar iconview specific properties */
+.thunar {
+    -ThunarIconView-row-spacing: 25;
+    -ThunarIconView-column-spacing: 50;
+}
 
 /* Logout Screen XFCE */
 .xfsm-logout-dialog {
