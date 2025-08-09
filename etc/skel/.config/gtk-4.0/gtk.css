@@ -1,0 +1,77 @@
+window celluloid-video-area {
+  background: #333;
+  color: #ddd;
+}
+
+window celluloid-video-area .top-bar,
+window celluloid-video-area .control-box  {
+  background-color: alpha(@headerbar_bg_color, 0.8);
+}
+
+window celluloid-video-area .osd,
+window celluloid-video-area .floating-header * {
+  color: @headerbar_fg_color;
+}
+
+window celluloid-video-area .floating-header  {
+  margin: 0px;
+}
+
+window celluloid-video-area .top-bar .start image {
+  margin-left: -80px;
+  opacity: 0;
+}
+
+window celluloid-video-area .floating-header .minimize image,
+window celluloid-video-area .floating-header .maximize image,
+window celluloid-video-area .floating-header .close image {
+  background-color: alpha(@headerbar_fg_color, 0.15);
+  -gtk-icon-size: 16px;
+  padding: 7px;
+  border-radius: 100%;
+  border: 0;
+}
+
+window celluloid-video-area .floating-header .osd image {
+  background-color: alpha(@headerbar_fg_color, 0.15);
+  -gtk-icon-size: 18px;
+  padding: 6px;
+  border-radius: 100%;
+  border: 0;
+}
+
+window celluloid-video-area .floating-header .text-button {
+  background-color: alpha(@headerbar_fg_color, 0.15);
+  margin: 5px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 16px;
+  border:0px;
+}
+
+window celluloid-video-area .floating-header .end .osd {
+  background-color: transparent;
+  border: 0px;
+}
+
+window celluloid-video-area popover.menu > contents,
+window celluloid-video-area popover.menu > arrow {
+  background-color: @window_bg_color;
+  color: @window_fg_color;
+}
+
+window box overlay-split-view widget playlist toolbarview {
+  background-color: alpha(@window_bg_color, 0.9);
+  color: @window_fg_color;
+}
+
+window celluloid-video-area scale trough highlight {
+background-color: @window_fg_color;
+}
+
+window celluloid-video-area .scale-popup contents,
+window celluloid-video-area .scale-popup arrow {
+  background-color: @window_bg_color;
+  color: @window_fg_color;
+}
+
