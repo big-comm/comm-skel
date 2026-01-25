@@ -1,0 +1,77 @@
+window celluloid-video-area {
+    background: #f5f5f5;
+    color: #1f1f1f;
+}
+
+window celluloid-video-area .top-bar,
+window celluloid-video-area .control-box {
+    background-color: rgba(255, 255, 255, 0.85);
+}
+
+window celluloid-video-area .osd,
+window celluloid-video-area .floating-header * {
+    color: #1f1f1f;
+}
+
+window celluloid-video-area .floating-header {
+    margin: 0px;
+}
+
+window celluloid-video-area .top-bar .start image {
+    margin-left: -80px;
+    opacity: 0;
+}
+
+window celluloid-video-area .floating-header .minimize image,
+window celluloid-video-area .floating-header .maximize image,
+window celluloid-video-area .floating-header .close image {
+    background-color: rgba(0, 0, 0, 0.08);
+    -gtk-icon-size: 16px;
+    padding: 7px;
+    border-radius: 100%;
+    border: 0;
+}
+
+window celluloid-video-area .floating-header .osd image {
+    background-color: rgba(0, 0, 0, 0.08);
+    -gtk-icon-size: 18px;
+    padding: 6px;
+    border-radius: 100%;
+    border: 0;
+}
+
+window celluloid-video-area .floating-header .text-button {
+    background-color: rgba(0, 0, 0, 0.08);
+    margin: 5px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 16px;
+    border: 0px;
+    color: #1f1f1f;
+}
+
+window celluloid-video-area .floating-header .end .osd {
+    background-color: transparent;
+    border: 0px;
+}
+
+window celluloid-video-area popover.menu>contents,
+window celluloid-video-area popover.menu>arrow {
+    background-color: rgba(255, 255, 255, 0.95);
+    color: #1f1f1f;
+}
+
+window box overlay-split-view widget playlist toolbarview {
+    background-color: rgba(255, 255, 255, 0.92);
+    color: #1f1f1f;
+}
+
+window celluloid-video-area scale trough highlight {
+    background-color: #3584e4;
+}
+
+window celluloid-video-area .scale-popup contents,
+window celluloid-video-area .scale-popup arrow {
+    background-color: rgba(255, 255, 255, 0.95);
+    color: #1f1f1f;
+}
