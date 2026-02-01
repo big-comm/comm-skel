@@ -1,28 +1,69 @@
 @import 'colors.css';
 
+/* XFCE Panel */
 .xfce4-panel {
-  background-color: rgba(30,30,30,0.8);
+  background-color: alpha(@theme_bg_color, 0.8);
+  color: @theme_fg_color;
   border: none;
 }
 
-/* Configuration icons tray XFCE */
- #xfce4-notification-plugin *, #xfce4-power-manager-plugin *, #pulseaudio-button *, #indicator-button *, #sn-button *, #showdesktop-button * {
- -gtk-icon-transform: scale(0.8);
+/* Forces text color on all labels and buttons INSIDE the panel
+   This ensures that the clock, window buttons, and plugins use the correct color */
+.xfce4-panel label,
+.xfce4-panel button,
+.xfce4-panel image {
+  color: @theme_fg_color;
+}
+
+/* Removes text shadows that can hinder readability on transparent backgrounds */
+.xfce4-panel .text-button,
+.xfce4-panel .button,
+.xfce4-panel label {
+  text-shadow: none;
+}
+
+/* Ensures symbolic (monochromatic) icons follow the text color */
+.xfce4-panel image {
+  -gtk-icon-style: symbolic;
+}
+
+/* --- Remaining icon configurations and transformations --- */
+#xfce4-notification-plugin *, 
+#xfce4-power-manager-plugin *, 
+#pulseaudio-button *, 
+#indicator-button *, 
+#sn-button *, 
+#showdesktop-button * {
+  -gtk-icon-transform: scale(0.8);
+  /* Reinforces the color for specific plugins if necessary */
+  color: @theme_fg_color; 
+}
+
+/* Tray icon configuration */
+#xfce4-notification-plugin *, 
+#xfce4-power-manager-plugin *, 
+#pulseaudio-button *, 
+#indicator-button *, 
+#sn-button *, 
+#showdesktop-button * {
+  -gtk-icon-transform: scale(0.8);
 }
 
 #xfce4-clipman-plugin * {
- -gtk-icon-transform: scale(0.6);
+  -gtk-icon-transform: scale(0.6);
 }
 
-/* Configuration Calendar XFCE */
+/* Calendar - Colors inherited from the system */
 calendar {
-font-size: 16px;
-padding: 8px;
-border: 0px;
-outline: none;
+  font-size: 16px;
+  padding: 8px;
+  border: 0px;
+  outline: none;
+  background-color: @theme_base_color;
+  color: @theme_text_color;
 }
 
-/* Whisker Menu XFCE */
+/* Whisker Menu */
 #whiskermenu-window * {
   border: 0px;
   outline: none;
@@ -31,10 +72,11 @@ outline: none;
 }
 
 #whiskermenu-window {
-  background-color: rgba(30,30,30,0.9);
+  background-color: alpha(@theme_bg_color, 0.95);
   border-radius: 15px 15px 0px 0px;
 }
 
+/* Hover and Selection states in Whisker Menu */
 #whiskermenu-window button:focus,
 #whiskermenu-window button:hover,
 #whiskermenu-window button:active,
@@ -42,115 +84,101 @@ outline: none;
 #whiskermenu-window treeview:selected,
 #whiskermenu-window treeview:hover,
 #whiskermenu-window treeview:active,
-#whiskermenu-window treeview:focus
-{
-background: rgba(255, 255, 255, 0.15);
-transition: 200ms;
+#whiskermenu-window treeview:focus,
+#whiskermenu-window iconview:hover {
+  /* Uses system selection color with transparency for a subtle effect */
+  background: alpha(@theme_selected_bg_color, 0.3);
+  transition: 200ms;
 }
 
 #whiskermenu-window treeview:focus {
-background: transparent;
+  background: transparent;
 }
-#whiskermenu-window iconview{
-background: transparent;
-border-radius: 8px;
+
+#whiskermenu-window iconview {
+  background: transparent;
+  border-radius: 10px;
+  transition: 200ms;
+  padding: 2px 15px;
 }
 
 #whiskermenu-window button {
-padding-left: 15px;
-padding-right: 15px;
-padding-top: 5px;
-padding-bottom: 5px;
+  padding: 5px 15px;
 }
 
-#whiskermenu-window iconview:hover{
-background: rgba(255, 255, 255, 0.15);
-transition: 200ms;
-}
-
-#whiskermenu-window iconview{
-background: transparent;
-border-radius: 10px;
-transition: 200ms;
-padding-left: 15px;
-padding-right: 15px;
-padding-top: 2px;
-padding-bottom: 2px;
-}
-
-.thunar * { border: 0 }
-
+/* Thunar */
+.thunar * { border: 0; }
 
 .thunar .vertical .view {
-    border-bottom-left-radius: 12px;
+  border-bottom-left-radius: 12px;
 }
 
-.thunar .vertical .view, .thunar toolbar {
-    background: @headerbar_bg_color;
-    padding-bottom: 3px;
-    padding-top: 3px;
-    color: alpha(@window_fg_color,0.75);
+.thunar .vertical .view, 
+.thunar toolbar {
+  background: @headerbar_bg_color;
+  padding: 3px 0;
+  color: alpha(@theme_fg_color, 0.75);
 }
 
 .thunar toolbar * {
-    color: alpha(@window_fg_color,0.75);
+  color: alpha(@theme_fg_color, 0.75);
 }
 
 .thunar .vertical .view:selected {
-    background-color: alpha(@theme_selected_bg_color,0.2);
-    border-radius: 8px;
-
+  background-color: alpha(@theme_selected_bg_color, 0.2);
+  border-radius: 8px;
 }
 
-.thunar .vertical *:backdrop, .thunar toolbar:backdrop {
-    background: @headerbar_bg_color_backdrop;
+.thunar .vertical *:backdrop, 
+.thunar toolbar:backdrop {
+  background: @headerbar_bg_color_backdrop;
 }
 
 .thunar:not(.maximized):not(.fullscreen):not(.popup):not(.menu):not(.dropdown):not(.tooltip):not(.context-menu) .sidebar {
-    border-bottom-left-radius: 12px;
+  border-bottom-left-radius: 12px;
 }
 
 .thunar .sidebar {
-   padding-left: 10px;
-   padding-right: 10px;
+  padding: 0 10px;
 }
 
-window:not(.maximized):not(.fullscreen):not(.popup):not(.menu):not(.dropdown):not(.tooltip):not(.context-menu) decoration, window.csd:not(.maximized):not(.fullscreen) {
-    border-bottom-right-radius: 12px;
-    border-bottom-left-radius: 12px;
+/* Window Borders */
+window:not(.maximized):not(.fullscreen):not(.popup):not(.menu):not(.dropdown):not(.tooltip):not(.context-menu) decoration, 
+window.csd:not(.maximized):not(.fullscreen) {
+  border-bottom-right-radius: 12px;
+  border-bottom-left-radius: 12px;
 }
 
-/* Thunar iconview specific properties */
 .thunar {
-    -ThunarIconView-row-spacing: 25;
-    -ThunarIconView-column-spacing: 50;
+  -ThunarIconView-row-spacing: 25;
+  -ThunarIconView-column-spacing: 50;
 }
 
-/* Logout Screen XFCE */
+/* XFCE Logout Screen */
 .xfsm-logout-dialog {
-    background: rgba(30, 30, 30, 0.8);
-    border-radius: 40px;
-    padding: 0px;
+  background: alpha(@theme_bg_color, 0.9);
+  color: @theme_fg_color;
+  border-radius: 40px;
+  padding: 0px;
 }
 
 .xfsm-logout-dialog .text-button {
-    border: 1px solid rgba(255, 255, 255, 0);
-    margin-right: 30px;
-    margin-bottom: 30px;
+  border: 1px solid transparent;
+  margin-right: 30px;
+  margin-bottom: 30px;
 }
 
 .xfsm-logout-buttons button {
-    background: rgba(30, 30, 30, 0.8);
-    border: 1px solid rgba(255, 255, 255, 0);
-    border-radius: 16px;
-    padding: 30px;
-    margin: 10px;
+  background: alpha(@theme_bg_color, 0.5);
+  color: @theme_fg_color;
+  border: 1px solid alpha(@theme_fg_color, 0.1);
+  border-radius: 16px;
+  padding: 30px;
+  margin: 10px;
 }
 
 .xfsm-logout-buttons button:hover {
-    background: rgba(255, 255, 255, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0);
-    border-radius: 16px;
-    padding: 30px;
-    margin: 10px;
+  background: alpha(@theme_selected_bg_color, 0.4);
+  border: 1px solid alpha(@theme_selected_bg_color, 0.5);
 }
+
